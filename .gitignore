@@ -1,0 +1,14 @@
+# .NET build output
+bin/
+obj/
+
+# App config with your Notion token (copy config.example.json to config.json)
+config.json
+
+# IDE / OS
+.vs/
+.vscode/
+*.user
+*.suo
+.DS_Store
+Thumbs.db

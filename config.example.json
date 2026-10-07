@@ -1,0 +1,19 @@
+{
+  // Your Notion integration token (keep this file private — it is git-ignored).
+  "NotionToken": "PASTE_YOUR_TOKEN_HERE",
+
+  // Your Notion database ("DB-Quick Capture").
+  "DatabaseId": "PASTE_YOUR_DATABASE_ID_HERE",
+
+  // Local notes file (relative paths are resolved next to QuickCapture.exe)
+  "NotesFile": "notes.md",
+
+  // Folder where attached files are copied
+  "AttachmentsFolder": "attachments",
+
+  // Lists offered in the ~list popup of the capture bar
+  "Lists": [ "Inbox", "Education", "Career", "Fitness", "Health", "Personal" ],
+
+  // Categories offered in the !category popup of the capture bar
+  "Categories": [ "Spark", "TIL", "Prompt" ]
+}
