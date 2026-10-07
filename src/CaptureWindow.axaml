@@ -1,0 +1,78 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ae="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+        x:Class="QuickCapture.CaptureWindow"
+        Title="Quick Capture" Width="640" SizeToContent="Height"
+        MinWidth="480" WindowStartupLocation="Manual"
+        Background="#1C1C1E" Foreground="#F2F2F2"
+        ShowInTaskbar="False" Topmost="True">
+  <Window.Styles>
+    <Style Selector="Button.action">
+      <Setter Property="Background" Value="#2C2C30"/>
+      <Setter Property="Foreground" Value="#F2F2F2"/>
+      <Setter Property="CornerRadius" Value="8"/>
+      <Setter Property="Padding" Value="10,6"/>
+      <Setter Property="FontSize" Value="14"/>
+      <Setter Property="BorderBrush" Value="#3A3A40"/>
+      <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+    <Style Selector="Button.action:pointerover">
+      <Setter Property="Background" Value="#38383E"/>
+    </Style>
+    <Style Selector="Button.save">
+      <Setter Property="Background" Value="#2DD4BF"/>
+      <Setter Property="Foreground" Value="#101214"/>
+      <Setter Property="CornerRadius" Value="10"/>
+      <Setter Property="Padding" Value="16,8"/>
+      <Setter Property="FontSize" Value="15"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+    <Style Selector="Button.save:pointerover">
+      <Setter Property="Background" Value="#5EEAD4"/>
+    </Style>
+  </Window.Styles>
+
+  <StackPanel Margin="16,12,16,14" Spacing="10">
+    <DockPanel>
+      <TextBlock Text="Quick Capture" FontSize="14" FontWeight="Bold"
+                 DockPanel.Dock="Left" VerticalAlignment="Center"/>
+      <TextBlock Text="Enter save · Shift+Enter newline · Esc dismiss" FontSize="11"
+                 Foreground="#71717A" DockPanel.Dock="Right" VerticalAlignment="Center"/>
+    </DockPanel>
+
+    <Grid ColumnDefinitions="*,Auto">
+      <Border x:Name="InputBorder" Background="#242428" BorderBrush="#3A3A40" BorderThickness="1"
+              CornerRadius="10" Padding="12,10" Margin="0,0,10,0"
+              MinHeight="46" MaxHeight="150">
+        <Grid>
+          <ae:TextEditor x:Name="Editor" Background="Transparent" Foreground="#F2F2F2"
+                         FontSize="15" ShowLineNumbers="False" WordWrap="True"
+                         BorderThickness="0" Padding="0" MinHeight="24" Focusable="True"
+                         HorizontalScrollBarVisibility="Disabled"
+                         VerticalScrollBarVisibility="Auto"/>
+          <TextBlock x:Name="Watermark" Text="capture a thought..." Foreground="#71717A"
+                     FontSize="15" IsHitTestVisible="False" VerticalAlignment="Top"/>
+        </Grid>
+      </Border>
+      <Button x:Name="SaveButton" Grid.Column="1" Classes="save" Content="➤ Add"
+              VerticalAlignment="Stretch" MinWidth="88"/>
+      <Popup x:Name="ListPopup" Placement="Bottom" IsLightDismissEnabled="True">
+        <Border Background="#2C2C30" BorderBrush="#3A3A40" BorderThickness="1"
+                CornerRadius="10" Padding="4" Width="240">
+          <ListBox x:Name="ListBox" MaxHeight="210" Background="Transparent"/>
+        </Border>
+      </Popup>
+    </Grid>
+
+    <WrapPanel x:Name="ChipPanel"/>
+
+    <DockPanel>
+      <Button x:Name="AttachButton" Classes="action" Content="+" Width="36"
+              DockPanel.Dock="Left" ToolTip.Tip="Attach files (or drag &amp; drop / Ctrl+V)"/>
+      <TextBlock x:Name="StatusText" DockPanel.Dock="Right" VerticalAlignment="Center"
+                 FontSize="12" Foreground="#8E8E96"/>
+      <TextBlock x:Name="ParsedHint" VerticalAlignment="Center" FontSize="12"
+                 Foreground="#71717A" Margin="10,0,8,0" TextTrimming="CharacterEllipsis"/>
+    </DockPanel>
+  </StackPanel>
+</Window>
